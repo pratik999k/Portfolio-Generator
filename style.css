@@ -227,3 +227,21 @@ body.dark .project-card {
         font-size: 24px;
     }
 }
+.profile-img {
+    width: 180px;
+    height: 180px;
+
+    object-fit: cover;        /* Prevent distortion */
+    border-radius: 50%;       /* Perfect circle */
+
+    border: 4px solid white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+
+    margin-bottom: 20px;
+
+    transition: 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
+}
