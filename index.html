@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Portfolio Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- LOADER -->
+    <div id="loader" class="loader">Loading...</div>
+
+    <!-- INPUT SECTION -->
+    <section id="inputSection" class="home">
+        <h1>Create <span>Your Portfolio</span></h1>
+
+        <form id="portfolioForm">
+            <input type="file" id="profilePic" accept="image/*" placeholder="Profile Picture" required>
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="text" id="role" placeholder="Your Role" required>
+            <textarea id="about" placeholder="About You" required></textarea>
+            <textarea id="education" placeholder="Education" required></textarea>
+            <input type="text" id="skills" placeholder="Skills" required>
+            <textarea id="projects" placeholder="Projects (Title-Description,Title-Description)" required></textarea>
+            <textarea id="experience" placeholder="Experience"></textarea>
+            <input type="email" id="email" placeholder="Email" required>
+
+            <button type="submit">Generate Portfolio</button>
+        </form>
+    </section>
+
+    <!-- GENERATED PORTFOLIO -->
+    <div id="portfolio" style="display:none;">
+
+        <nav>
+            <h2>MyPortfolio</h2>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#aboutSection">About</a></li>
+                <li><a href="#skillsSection">Skills</a></li>
+                <li><a href="#projectsSection">Projects</a></li>
+                <li><a href="#contactSection">Contact</a></li>
+            </ul>
+            <button id="themeToggle">Toggle Theme</button>
+        </nav>
+
+        <section id="home" class="home">
+            <img id="pImage" class="profile-img">
+            <h1 id="pName"></h1>
+            <p id="pRole"></p>
+            <a href="#" download class="resume-btn">Download Resume</a>
+        </section>
+
+        <section id="aboutSection">
+            <h2>About</h2>
+            <p id="pAbout"></p>
+        </section>
+
+        <section id="educationSection">
+            <h2>Education</h2>
+            <p id="pEducation"></p>
+        </section>
+
+        <section id="skillsSection">
+            <h2>Skills</h2>
+            <div id="pSkills"></div>
+        </section>
+
+        <section id="projectsSection">
+            <h2>Projects</h2>
+            <div id="pProjects"></div>
+        </section>
+
+        <section id="experienceSection">
+            <h2>Experience</h2>
+            <p id="pExperience"></p>
+        </section>
+
+        <section id="contactSection">
+            <h2>Contact</h2>
+            <p>Email: <span id="pEmail"></span></p>
+
+            <form id="contactForm">
+                <input type="text" placeholder="Your Name" required>
+                <textarea placeholder="Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+
+            <div class="social">
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
