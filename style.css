@@ -34,6 +34,7 @@ body.dark {
     z-index: 9999;
 }
 
+/* ===== SPINNER ===== */
 .spinner {
     width: 60px;
     height: 60px;
@@ -44,9 +45,7 @@ body.dark {
 }
 
 @keyframes spin {
-    100% {
-        transform: rotate(360deg);
-    }
+    100% { transform: rotate(360deg); }
 }
 
 /* ===== INPUT SECTION ===== */
@@ -61,6 +60,11 @@ body.dark {
     color: white;
 }
 
+#inputSection span {
+    color: #111;
+}
+
+/* ===== FORM ===== */
 form {
     max-width: 500px;
     margin: auto;
@@ -102,7 +106,7 @@ nav {
     position: sticky;
     top: 0;
     backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.25);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -112,6 +116,10 @@ nav {
 
 body.dark nav {
     background: rgba(15, 23, 42, 0.9);
+}
+
+nav h2 {
+    font-weight: 700;
 }
 
 nav ul {
@@ -131,6 +139,14 @@ nav ul li a:hover {
     color: #667eea;
 }
 
+/* ===== THEME BUTTON ===== */
+#themeToggle {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
 /* ===== SECTIONS ===== */
 section {
     padding: 80px 20px;
@@ -143,20 +159,67 @@ section {
         opacity: 0;
         transform: translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* ===== HOME ===== */
+/* ===== HOME SECTION ===== */
 .home {
     min-height: 80vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+}
+
+/* ===== PROFILE IMAGE (FINAL FIXED VERSION) ===== */
+.profile-img {
+    width: 160px;
+    height: 160px;
+
+    max-width: 160px;
+    max-height: 160px;
+
+    object-fit: cover;
+    border-radius: 50%;
+
+    background: white;
+    padding: 4px;
+
+    border: 3px solid white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+
+    display: block;
+    margin: 20px auto;
+
+    transition: 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
+}
+
+/* 🔥 Prevent giant images forever */
+#home img {
+    max-width: 100%;
+}
+
+/* ===== RESUME BUTTON ===== */
+.resume-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: white;
+    color: #333;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.resume-btn:hover {
+    transform: scale(1.05);
 }
 
 /* ===== SKILLS ===== */
@@ -207,6 +270,61 @@ body.dark .project-card {
     transform: translateY(-8px);
 }
 
+/* ===== CONTACT FORM ===== */
+#contactForm {
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#contactForm input,
+#contactForm textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+#contactForm button {
+    padding: 10px;
+    border: none;
+    background: #667eea;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#contactForm button:hover {
+    background: #5a67d8;
+}
+
+/* ===== SOCIAL LINKS ===== */
+.social {
+    margin-top: 15px;
+}
+
+.social a {
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 600;
+    color: inherit;
+    transition: 0.3s;
+}
+
+.social a:hover {
+    color: #764ba2;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    background: rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     nav {
@@ -226,30 +344,4 @@ body.dark .project-card {
     section h2 {
         font-size: 24px;
     }
-}
-.profile-img {
-   width: 120px;
-height: 120px;
-    object-fit: cover;        /* Prevent distortion */
-    border-radius: 50%;       /* Perfect circle */
-
-    border: 4px solid white;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-
-    margin-bottom: 20px;
-
-    transition: 0.3s ease;
-    
-    background: white;
-    padding: 5px;
-}
-
-.profile-img:hover {
-    transform: scale(1.05);
-}
-#home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
