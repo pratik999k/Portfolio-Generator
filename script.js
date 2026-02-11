@@ -4,11 +4,11 @@ const loader = document.getElementById("loader");
 form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    loader.style.display = "flex"; // Show spinner
+    loader.style.display = "flex";
 
     setTimeout(() => {
 
-        // ===== Get input values =====
+        // ===== Get Values =====
         const name = document.getElementById("name").value;
         const role = document.getElementById("role").value;
         const about = document.getElementById("about").value;
@@ -17,8 +17,9 @@ form.addEventListener("submit", function (e) {
         const projectsInput = document.getElementById("projects").value;
         const experience = document.getElementById("experience").value;
         const email = document.getElementById("email").value;
+        const imageFile = document.getElementById("profilePic").files[0];
 
-        // ===== Set basic fields =====
+        // ===== Set Text Fields =====
         document.getElementById("pName").innerText = name;
         document.getElementById("pRole").innerText = role;
         document.getElementById("pAbout").innerText = about;
@@ -26,9 +27,17 @@ form.addEventListener("submit", function (e) {
         document.getElementById("pExperience").innerText =
             experience === "" ? "Fresher" : experience;
         document.getElementById("pEmail").innerText = email;
-        document.getElementById("footerName").innerText = name;
 
-        // ===== SKILLS WITH ANIMATION =====
+        // ===== Profile Image =====
+        if (imageFile) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById("pImage").src = reader.result;
+            };
+            reader.readAsDataURL(imageFile);
+        }
+
+        // ===== Skills =====
         const skillsContainer = document.getElementById("pSkills");
         skillsContainer.innerHTML = "";
 
@@ -40,7 +49,7 @@ form.addEventListener("submit", function (e) {
 
             skillDiv.innerHTML = `
                 <p>${skillName.trim()}</p>
-                <div class="skill-progress" style="width:0%"></div>
+                <div class="skill-progress"></div>
             `;
 
             skillsContainer.appendChild(skillDiv);
@@ -51,7 +60,7 @@ form.addEventListener("submit", function (e) {
             }, 200);
         });
 
-        // ===== PROJECT CARDS =====
+        // ===== Projects =====
         const projectContainer = document.getElementById("pProjects");
         projectContainer.innerHTML = "";
 
@@ -69,36 +78,21 @@ form.addEventListener("submit", function (e) {
             projectContainer.appendChild(card);
         });
 
-        // ===== SAVE TO LOCAL STORAGE =====
-        const data = {
-            name, role, about, education,
-            skills: skillsInput,
-            projects: projectsInput,
-            experience, email
-        };
-
-        localStorage.setItem("portfolioData", JSON.stringify(data));
-
-        // ===== Switch Views =====
+        // ===== Switch View =====
         loader.style.display = "none";
         document.getElementById("inputSection").style.display = "none";
         document.getElementById("portfolio").style.display = "block";
 
-    }, 1000); // 1 second loading
+    }, 1000);
 });
 
+// ===== Theme Toggle =====
+document.getElementById("themeToggle").addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+});
 
-// ===== Auto Load Saved Portfolio =====
-window.addEventListener("load", function () {
-    const saved = localStorage.getItem("portfolioData");
-    if (!saved) return;
-
-    const data = JSON.parse(saved);
-
-    document.getElementById("pName").innerText = data.name;
-    document.getElementById("pRole").innerText = data.role;
-    document.getElementById("pAbout").innerText = data.about;
-    document.getElementById("pEducation").innerText = data.education;
-    document.getElementById("pExperience").innerText = data.experience;
-    document.getElementById("pEmail").innerText = data.email;
+// ===== Contact Form =====
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    alert("Message sent successfully!");
 });
